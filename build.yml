@@ -1,4 +1,4 @@
-platform: windows
+platform: linux
 
 image_resource:
   type: docker-image
@@ -9,4 +9,4 @@ inputs:
 - name: hello-world-repo
 
 run:
-  path: hello-world-repo/build.cmd
+  path: hello-world-repo/build.sh
