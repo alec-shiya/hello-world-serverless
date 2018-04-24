@@ -1,4 +1,6 @@
+pwd
 cd hello-world-repo
+pwd
 dotnet restore
 dotnet build
 dotnet test aws-csharp-tests

@@ -9,5 +9,4 @@ inputs:
 - name: hello-world-repo
 
 run:
-  path: sh
-  args: ["hello-world-repo/build.sh"]
+  path: hello-world-repo/build.sh
