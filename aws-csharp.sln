@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aws-csharp-tests", "aws-csharp-tests\aws-csharp-tests.csproj", "{CDDDF064-C538-4A83-BD56-6CF298603DD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aws-csharp", "aws-csharp\aws-csharp.csproj", "{1CCDF586-0256-4009-B1FA-7C0B3498AF77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDDDF064-C538-4A83-BD56-6CF298603DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDDF064-C538-4A83-BD56-6CF298603DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDDF064-C538-4A83-BD56-6CF298603DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDDF064-C538-4A83-BD56-6CF298603DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCDF586-0256-4009-B1FA-7C0B3498AF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCDF586-0256-4009-B1FA-7C0B3498AF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCDF586-0256-4009-B1FA-7C0B3498AF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCDF586-0256-4009-B1FA-7C0B3498AF77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEB917B4-EA35-4F6B-B30F-19CB0A4B0AC3}
+	EndGlobalSection
+EndGlobal
