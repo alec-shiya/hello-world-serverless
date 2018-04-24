@@ -10,5 +10,5 @@ inputs:
 
 run:
   path: sh
-  args: ["hello-world-repo/build.sh"]
+  args: ["build.sh"]
   dir: hello-world-repo
