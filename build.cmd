@@ -1,3 +1,4 @@
+cd ./hello-world-repo
 dotnet restore
 dotnet build
 dotnet test ./aws-csharp-tests/
