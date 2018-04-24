@@ -1,0 +1,66 @@
+resources:
+- name: hello-world-repo
+  type: git
+  source:
+    uri: https://github.com/alec-shiya/hello-world-serverless.git
+    branch: master
+    private_key: |-
+      -----BEGIN RSA PRIVATE KEY-----
+      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
+      -----END RSA PRIVATE KEY-----
+
+jobs:
+- name: hello-world-build
+  plan:
+  - get: hello-world-repo
+    trigger: true
+  - task: build
+    file: hello-world-repo/build.yml
