@@ -57,10 +57,37 @@ resources:
       wanQvsz8zVhGVvIxCj5NXDMNZ6FPI9PQJxhwXs3+sxWZDAB5lGYtioRnepZm
       -----END RSA PRIVATE KEY-----
 
+# jobs:
+# - name: hello-world-build
+#   plan:
+#   - get: hello-world-repo
+#     trigger: true
+#   - task: build
+#     file: hello-world-repo/build.yml
 jobs:
 - name: hello-world-build
   plan:
   - get: hello-world-repo
     trigger: true
   - task: build
-    file: hello-world-repo/build.yml
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: microsoft/dotnet
+      inputs:
+      - name: hello-world-repo
+      run:
+        path: sh
+        args: ["dotnet restore ; dotnet build"]
+        dir: hello-world-repo
+- name: hello-world-tests
+  plan:
+    passed: [hello-world-build]
+    trigger: true
+  - task: test
+    config:
+      run:
+        path: sh
+        args: ["dotnet test"]    
