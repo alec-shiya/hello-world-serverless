@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/alec-shiya/hello-world-serverless.git
-    branch: master
+    branch: new-branch
     private_key: |-
       -----BEGIN RSA PRIVATE KEY-----
       MIIJKQIBAAKCAgEAt/uAba/Rckz7mg6SAOKiy+Ee9igKKNRVJYP8gD2Vtyp8NsI2
@@ -76,10 +76,27 @@ jobs:
         type: docker-image
         source:
           repository: microsoft/dotnet
+      inputs:
+      - name: hello-world-repo
+      outputs:
+      - name: hello-world-repo
       run:
-        path: ls
-        args: [-a]
-        dir: ./hello-world-repo/aws-csharp-tests
+        path: dotnet
+        args: [build]
+        dir: hello-world-repo
+  - task: build
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: microsoft/dotnet
+      inputs:
+      - name: hello-world-repo
+      run:
+        path: dotnet
+        args: [test]
+        dir: hello-world-repo/aws-csharp-tests
 
 # - name: hello-world-test
 #   plan:
