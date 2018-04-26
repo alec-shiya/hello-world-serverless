@@ -77,26 +77,26 @@ jobs:
         source:
           repository: microsoft/dotnet
       run:
-        path: dotnet
-        args: [build]
-        dir: hello-world-repo
+        path: ls
+        args: [-a]
+        dir: ./hello-world-repo/aws-csharp-tests
 
-- name: hello-world-test
-  plan:
-  - get: hello-world-repo
-    passed: [hello-world-build]
-    trigger: true
-  - task: test
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: microsoft/dotnet
-      run:
-        path: dotnet
-        args: [test]
-        dir: hello-world-repo
+# - name: hello-world-test
+#   plan:
+#   - get: hello-world-repo
+#     passed: [hello-world-build]
+#     trigger: true
+#   - task: test
+#     config:
+#       platform: linux
+#       image_resource:
+#         type: docker-image
+#         source:
+#           repository: microsoft/dotnet
+#       run:
+#         path: dotnet
+#         args: [test]
+#         dir: hello-world-repo
   # - task: test
   #   config:
   #     platform: linux
