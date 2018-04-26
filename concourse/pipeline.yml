@@ -113,12 +113,15 @@ jobs:
         type: docker-image
         source:
           repository: microsoft/dotnet
+      inputs:
+      - name: hello-world-repo
       run:
         # path: apt-get
         # args: [update]
+        # path: ls
+        # args: [-a,-d]
         path: sh
-        args: [install-packages.sh]
-        dir: hello-world-repo
+        args: ["hello-world-repo/install-packages.sh"]
 
 #   - task: package
 #     config:
