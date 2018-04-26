@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/alec-shiya/hello-world-serverless.git
-    branch: new-branch
+    branch: master
     private_key: |-
       -----BEGIN RSA PRIVATE KEY-----
       MIIJKQIBAAKCAgEAt/uAba/Rckz7mg6SAOKiy+Ee9igKKNRVJYP8gD2Vtyp8NsI2
@@ -57,13 +57,6 @@ resources:
       wanQvsz8zVhGVvIxCj5NXDMNZ6FPI9PQJxhwXs3+sxWZDAB5lGYtioRnepZm
       -----END RSA PRIVATE KEY-----
 
-# jobs:
-# - name: hello-world-build
-#   plan:
-#   - get: hello-world-repo
-#     trigger: true
-#   - task: build
-#     file: hello-world-repo/build.yml
 jobs:
 - name: hello-world-build
   plan:
@@ -78,13 +71,11 @@ jobs:
           repository: microsoft/dotnet
       inputs:
       - name: hello-world-repo
-      outputs:
-      - name: hello-world-repo
       run:
         path: dotnet
         args: [build]
         dir: hello-world-repo
-  - task: build
+  - task: test
     config:
       platform: linux
       image_resource:
@@ -97,31 +88,49 @@ jobs:
         path: dotnet
         args: [test]
         dir: hello-world-repo/aws-csharp-tests
+  - task: publish
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: microsoft/dotnet
+      inputs:
+      - name: hello-world-repo
+      run:
+        path: dotnet
+        args: [publish]
+        dir: hello-world-repo/aws-csharp
+- name: hello-world-package
+  plan:
+  - get: hello-world-repo
+    trigger: true
+    passed: [hello-world-build]
+  - task: install-zip
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: microsoft/dotnet
+      run:
+        # path: apt-get
+        # args: [update]
+        path: sh
+        args: [install-packages.sh]
+        dir: hello-world-repo
 
-# - name: hello-world-test
-#   plan:
-#   - get: hello-world-repo
-#     passed: [hello-world-build]
-#     trigger: true
-#   - task: test
+#   - task: package
 #     config:
 #       platform: linux
 #       image_resource:
 #         type: docker-image
 #         source:
 #           repository: microsoft/dotnet
+#       inputs:
+#       - name: hello-world-repo
 #       run:
 #         path: dotnet
-#         args: [test]
-#         dir: hello-world-repo
-  # - task: test
-  #   config:
-  #     platform: linux
-  #     image_resource:
-  #       type: docker-image
-  #       source:
-  #         repository: microsoft/dotnet
-  #     run:
-  #       path: dotnet
-  #       args: [test]
-  #       dir: hello-world-repo/aws-csharp-tests
+#         args: [publish]
+#         dir: hello-world-repo/aws-csharp-tests
+# #apt -y install zip
