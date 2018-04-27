@@ -99,7 +99,7 @@ jobs:
       - name: hello-world-repo
       run:
         path: dotnet
-        args: [lambda,deploy-function]
+        args: [publish]
         dir: hello-world-repo/aws-csharp
 - name: hello-world-package
   plan:
@@ -112,13 +112,13 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: microsoft/dotnet
+          repository: microsoft/aspnetcore-build
       inputs:
       - name: hello-world-repo
       run:
-        path: dotnet
-        args: [lambda,deploy-function]
-        dir: hello-world-repo/aws-csharp
+        path: sh
+        args: [install-packages.sh]
+        dir: hello-world-repo
 
 #   - task: package
 #     config:
