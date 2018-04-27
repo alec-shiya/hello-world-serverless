@@ -1,3 +1,5 @@
-npm install serverless
+npm install -g serverless
+
+serverless --version
 
 serverless deploy
