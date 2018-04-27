@@ -1,0 +1,7 @@
+{
+    "region" : "us-east-1",
+    "configuration" : "release",
+    "framework": "netcoreapp2.0",
+    "function-runtime": "linux",
+    "function-name": "aws-csharp-dev-hello"
+}

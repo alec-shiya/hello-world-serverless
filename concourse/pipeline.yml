@@ -99,7 +99,7 @@ jobs:
       - name: hello-world-repo
       run:
         path: dotnet
-        args: [publish]
+        args: [lambda,deploy-function]
         dir: hello-world-repo/aws-csharp
 - name: hello-world-package
   plan:
@@ -116,12 +116,9 @@ jobs:
       inputs:
       - name: hello-world-repo
       run:
-        # path: apt-get
-        # args: [update]
-        # path: ls
-        # args: [-a,-d]
-        path: sh
-        args: ["hello-world-repo/install-packages.sh"]
+        path: dotnet
+        args: [lambda,deploy-function]
+        dir: hello-world-repo/aws-csharp
 
 #   - task: package
 #     config:

@@ -27,7 +27,7 @@ namespace AwsDotnetCsharp
 
 	    public string GetResponseMessage()
 	    {
-		    return "Hello World";
+		    return "Hello World updated";
 	    }
     }
 
