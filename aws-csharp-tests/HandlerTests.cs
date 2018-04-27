@@ -11,7 +11,7 @@ namespace aws_csharp_tests
         {
 			var handler = new Handler();
 
-			Assert.Equal("Hello World", handler.GetResponseMessage());
+			Assert.Equal("Hello World updated", handler.GetResponseMessage());
         }
     }
 }
